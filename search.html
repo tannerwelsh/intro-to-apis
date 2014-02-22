@@ -10,6 +10,13 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <!-- Load jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <!-- Load custom search URL builder -->
+    <script type="text/javascript" src="javascripts/searchUrlBuilder.js"></script>
+
     <title>Google Custom Search API</title>
   </head>
 
@@ -25,6 +32,31 @@
         <hr>
 
         <section id="main_content">
+          <p>We're going to plug into the Google Custom Search API and programmatically search a site for information.</p>
+
+          <h4>Step one: read the docs</h4>
+          <p>The Custom Search API docs are here: <a href="https://developers.google.com/custom-search/json-api/v1/overview">https://developers.google.com/custom-search/json-api/v1/overview</a>. Notice that there are two prerequisites: a <strong>Search engine ID</strong> and an <strong>API key</strong>. Follow the instructions to get them.</p>
+
+          <h4>Step two: build a URL</h4>
+          <p>We're going to use REST to retrieve data from the API, which means that we need to build a URL. The instructions for that can be found on the <a href="https://developers.google.com/custom-search/json-api/v1/using_rest">"Using Rest"</a> page.</p>
+          <p>Here's an example url: <code>https://www.googleapis.com/customsearch/v1?parameters</code>. Notice that there are three required query parameters (the stuff that comes after the <code>?</code> in the URL): <code>key</code> for the API key, <code>cx</code> for the custom search engine ID, and <code>q</code> for the query string (the text that you want to search for).</p>
+          <p>Using your own custom search engine ID and API key, build a URL so that it looks something like this:</p>
+          <pre><code>https://www.googleapis.com/customsearch/v1?key=API_KEY&cx=SEARCH_ENGINE_ID&q=QUERY_STRING</code></pre>
+
+          <h4>Step three: test it out</h4>
+          <p>Once you have your URL built, you can test it out by entering it directly into your browser. What do you see? I don't imagine it looks pretty.</p>
+          <p>What you're getting back is not HTML (which is what you normally see when you are using a web browser) but <strong>JSON</strong>. It is hard for us humans to read the data in JSON format, but computers sure do like it.</p>
+
+          <h4>Step four: do it in JavaScript</h4>
+          <p>Open a JavaScript console. You should have access to a function called <code>searchUrlBuilder</code> that takes three parameters: <code>apiKey</code>, <code>engineId</code>, and <code>query</code> and returns a formatted URL.</p>
+          <p>You can then use this URL to send an HTTP <code>GET</code> request with jQuery's <code>$.get()</code> function. Try it out!</p>
+
+          <h4>Step five: do whatever you want</h4>
+          <p>The next step would really be to parse and process the JSON response from Google and do something with the data. There is no limit to your imagination.</p>
+
+          <hr>
+
+          <img src="images/follow_your_dreams.gif" width="100%">
         </section>
       </div>
     </div>
