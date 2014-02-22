@@ -7,9 +7,12 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/maps.css" media="screen" />
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
     <title>Google Maps API</title>
   </head>
 
@@ -25,8 +28,24 @@
         <hr>
 
         <section id="main_content">
+          <div id="map-canvas"></div>
         </section>
       </div>
     </div>
+
+    <script type="text/javascript">
+      var map;
+
+      function initializeMap() {
+        var mapOptions = {
+          zoom: 8,
+          center: new google.maps.LatLng(-34.397, 150.644)
+        };
+
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      }
+    </script>
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initializeMap"></script>
   </body>
 </html>
